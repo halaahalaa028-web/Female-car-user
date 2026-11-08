@@ -1,8 +1,6 @@
 import UIKit
 import Flutter
 import GoogleMaps
-import Firebase
-import GoogleMaps
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -10,16 +8,14 @@ import GoogleMaps
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    FirebaseApp.configure()
+    // Firebase is initialized once from Dart using FlutterFire options.
     if let mapsApiKey = Bundle.main.object(forInfoDictionaryKey: "GMSApiKey") as? String,
-       !mapsApiKey.isEmpty {
+       !mapsApiKey.isEmpty,
+       !mapsApiKey.contains("$(") {
       GMSServices.provideAPIKey(mapsApiKey)
     }
-    if #available(iOS 10.0, *) {
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-    }
+
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
-
