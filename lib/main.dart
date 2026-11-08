@@ -56,6 +56,10 @@ Future<void> main() async {
     debugPrint('Could not set preferred orientation: $error');
   }
 
+  if (firebaseReady) {
+    FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+  }
+
   // Show Flutter UI before optional notification setup.
   runApp(
     MyApp(
@@ -65,7 +69,6 @@ Future<void> main() async {
   );
 
   if (firebaseReady) {
-    FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
     try {
       await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
     } catch (error, stackTrace) {
