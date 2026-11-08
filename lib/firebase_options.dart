@@ -5,44 +5,22 @@ import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    if (kIsWeb) {
-      return web;
-    }
+    if (kIsWeb) return web;
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions have not been configured for macos.');
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions have not been configured for windows.');
       case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions have not been configured for linux.');
       default:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
-        );
+        throw UnsupportedError('DefaultFirebaseOptions are not supported for this platform.');
     }
   }
 
@@ -56,11 +34,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDZSrdQ0F4tfYny7fcARpjlZTE5ObwIUpc',
-    appId: '1:993077501425:ios:1053b1cf6ca96acfa2b850',
+    appId: '1:993077501425:ios:0775b3b3d6a7c5fba2b850',
     messagingSenderId: '993077501425',
     projectId: 'female-car-1e241',
     storageBucket: 'female-car-1e241.firebasestorage.app',
-    iosBundleId: 'com.femalecar.eon',
+    iosBundleId: 'com.femalecaruserr.eon',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
@@ -72,5 +50,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'female-car-1e241.firebasestorage.app',
     measurementId: 'G-48RX4TB4EJ',
   );
-
 }
