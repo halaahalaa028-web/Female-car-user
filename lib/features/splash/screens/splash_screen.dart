@@ -29,10 +29,7 @@ class _SplashScreenState extends State<SplashScreen>
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _controller.forward();
 
-    // Initialize local preferences, but do not wait for a connectivity event
-    // before starting the app's navigation flow.
-    Get.find<ConfigController>().initSharedData();
-
+    // Start navigation after the first frame; connectivity is not a gate.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) _startApplicationRouting();
     });
@@ -40,9 +37,16 @@ class _SplashScreenState extends State<SplashScreen>
     _listenForConnectivityChanges();
   }
 
-  void _startApplicationRouting() {
+  Future<void> _startApplicationRouting() async {
     if (_startupRoutingStarted || !mounted) return;
     _startupRoutingStarted = true;
+    try {
+      await Get.find<ConfigController>().initSharedData();
+    } catch (error, stackTrace) {
+      debugPrint('Splash preference initialization failed: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+    if (!mounted) return;
     debugPrint('Splash: starting login/routing flow without waiting for connectivity stream');
     LoginHelper().handleIncomingLinks(widget.notificationData, widget.userName);
   }
