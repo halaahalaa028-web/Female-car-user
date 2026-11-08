@@ -7,10 +7,8 @@ workflows:
       app_store_connect: Banuvra-iOS-Package
     environment:
       ios_signing:
-        provisioning_profiles:
-          - Female Car User App Store Push 2026
-        certificates:
-          - ElShroq Apple Distribution 2026
+        distribution_type: app_store
+        bundle_identifier: com.femalecaruserr.eon
       flutter: stable
       xcode: latest
       cocoapods: default
