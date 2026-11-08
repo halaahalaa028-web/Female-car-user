@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "993077501425",
+    "project_id": "female-car-1e241",
+    "storage_bucket": "female-car-1e241.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993077501425:android:911d0f8675c8f96fa2b850",
+        "android_client_info": {
+          "package_name": "com.femalecar.eon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvJAdMuvKLpWMRjHkQkXtFaO96taJ7XFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

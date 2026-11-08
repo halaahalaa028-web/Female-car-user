@@ -1,0 +1,4751 @@
+{
+  "info": {
+    "_postman_id": "9459f72e-1afa-4609-a7d5-540b8e0efed2",
+    "name": "Wadini User App API Collection",
+    "description": "Official Postman Collection for Wadini Ride Sharing & Parcel Delivery User App API endpoints. Updated with exact request payloads, query parameters, headers, and authentication setup verified from runtime logs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://wadini.webbing-agency.com",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_BEARER_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "zoneId",
+      "value": "6d71211e-d623-4c42-8211-b1e6987899f5",
+      "type": "string"
+    },
+    {
+      "key": "lang",
+      "value": "en",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Auth & Account Management",
+      "item": [
+        {
+          "name": "Customer Registration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/registration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "registration"
+              ]
+            },
+            "description": "Registers a new customer account.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"phone\": \"+966500000000\",\n  \"password\": \"password123\",\n  \"confirm_password\": \"password123\",\n  \"referral_code\": \"REF123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Customer Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Logs in customer using phone or email and password.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\",\n  \"password\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "External Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/external-login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "external-login"
+              ]
+            },
+            "description": "Logs in customer via external provider.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\",\n  \"token\": \"external_auth_token\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/send-otp",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "send-otp"
+              ]
+            },
+            "description": "Sends an OTP to the customer's phone or email.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check User Registration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/check",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "check"
+              ]
+            },
+            "description": "Checks if phone or email is registered.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/otp-verification",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "otp-verification"
+              ]
+            },
+            "description": "Verifies the OTP sent to customer.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\",\n  \"otp\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Firebase OTP Verification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/firebase-otp-verification",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "firebase-otp-verification"
+              ]
+            },
+            "description": "Verifies Firebase OTP authentication.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\",\n  \"code\": \"123456\",\n  \"session_info\": \"firebase_session_id\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OTP Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/otp-login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "otp-login"
+              ]
+            },
+            "description": "Logs in customer using OTP.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\",\n  \"otp\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/auth/reset-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "auth",
+                "reset-password"
+              ]
+            },
+            "description": "Resets customer password after OTP verification.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_or_email\": \"+966500000000\",\n  \"password\": \"new_password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "change-password"
+              ]
+            },
+            "description": "Changes password for logged in user.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"old_password123\",\n  \"new_password\": \"new_password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update FCM Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/update/fcm-token",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "update",
+                "fcm-token"
+              ]
+            },
+            "description": "Updates Firebase Cloud Messaging push notification token.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\",\n  \"fcm_token\": \"sample_fcm_token\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "logout"
+              ]
+            },
+            "description": "Logs out the active user session.",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/delete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "delete"
+              ]
+            },
+            "description": "Permanently deletes the customer account.",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Profile Management",
+      "item": [
+        {
+          "name": "Get Profile Info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "info"
+              ]
+            },
+            "description": "Retrieves profile information for the authenticated customer."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile Info",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/update/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "update",
+                "profile"
+              ]
+            },
+            "description": "Updates customer profile details and profile/identity images using multipart form-data.",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "_method",
+                  "value": "put",
+                  "type": "text"
+                },
+                {
+                  "key": "first_name",
+                  "value": "John",
+                  "type": "text"
+                },
+                {
+                  "key": "last_name",
+                  "value": "Doe",
+                  "type": "text"
+                },
+                {
+                  "key": "identification_number",
+                  "value": "1234567890",
+                  "type": "text"
+                },
+                {
+                  "key": "identification_type",
+                  "value": "national_id",
+                  "type": "text"
+                },
+                {
+                  "key": "profile_image",
+                  "type": "file",
+                  "src": ""
+                },
+                {
+                  "key": "identity_images[0]",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Profile Level",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/level",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "level"
+              ]
+            },
+            "description": "Fetches loyalty/rewards level for the current customer."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Configuration & Location Services",
+      "item": [
+        {
+          "name": "Get App Configuration",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/configuration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "configuration"
+              ]
+            },
+            "description": "Retrieves app-wide settings, minimum versions, features, and policies."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Zone ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/get-zone-id?lat=31.5099117&lng=34.4509517",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "get-zone-id"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "31.5099117"
+                },
+                {
+                  "key": "lng",
+                  "value": "34.4509517"
+                }
+              ]
+            },
+            "description": "Returns Zone ID based on geographical latitude and longitude."
+          },
+          "response": []
+        },
+        {
+          "name": "Reverse Geocode Location",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/geocode-api?lat=31.5099117&lng=34.4509517",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "geocode-api"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "31.5099117"
+                },
+                {
+                  "key": "lng",
+                  "value": "34.4509517"
+                }
+              ]
+            },
+            "description": "Converts latitude and longitude into human-readable address details."
+          },
+          "response": []
+        },
+        {
+          "name": "Search Location Autocomplete",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/place-api-autocomplete?search_text=Riyadh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "place-api-autocomplete"
+              ],
+              "query": [
+                {
+                  "key": "search_text",
+                  "value": "Riyadh"
+                }
+              ]
+            },
+            "description": "Fetches address autocomplete predictions for location input."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Place Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/place-api-details?placeid=ChIJ3S-g4Ei3Lz4R4eR8v01_5-Y",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "place-api-details"
+              ],
+              "query": [
+                {
+                  "key": "placeid",
+                  "value": "ChIJ3S-g4Ei3Lz4R4eR8v01_5-Y"
+                }
+              ]
+            },
+            "description": "Retrieves exact coordinates and details for a Google Place ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Store Live Location",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/store-live-location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "store-live-location"
+              ]
+            },
+            "description": "Stores background live location of customer.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"17ff73d2-dda1-46d7-a6a3-999f66e4533a\",\n  \"type\": \"customer\",\n  \"latitude\": \"31.5099117\",\n  \"longitude\": \"34.4509517\",\n  \"zone_id\": \"6d71211e-d623-4c42-8211-b1e6987899f5\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Address Book",
+      "item": [
+        {
+          "name": "Add Saved Address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/address/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "address",
+                "add"
+              ]
+            },
+            "description": "Saves a new user address.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"King Fahd Road, Riyadh\",\n  \"address_label\": \"home\",\n  \"latitude\": 24.7136,\n  \"longitude\": 46.6753,\n  \"street\": \"10th Street\",\n  \"contact_person_name\": \"John Doe\",\n  \"contact_person_phone\": \"+966500000000\",\n  \"zone_id\": \"6d71211e-d623-4c42-8211-b1e6987899f5\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Saved Address List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/address/all-address?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "address",
+                "all-address"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Retrieves paginated list of saved user addresses."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Saved Address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/address/update",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "address",
+                "update"
+              ]
+            },
+            "description": "Updates existing saved address.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\",\n  \"id\": 1,\n  \"address\": \"Olaya Street, Riyadh\",\n  \"address_label\": \"work\",\n  \"latitude\": 24.7136,\n  \"longitude\": 46.6753,\n  \"street\": \"Main Boulevard\",\n  \"contact_person_name\": \"John Doe\",\n  \"contact_person_phone\": \"+966500000000\",\n  \"zone_id\": \"6d71211e-d623-4c42-8211-b1e6987899f5\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Saved Address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/address/delete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "address",
+                "delete"
+              ]
+            },
+            "description": "Deletes saved address by ID.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"delete\",\n  \"address_id\": \"1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Recent Address List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/recent-address",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "recent-address"
+              ]
+            },
+            "description": "Fetches recent addresses visited or searched by user."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. Rides & Booking",
+      "item": [
+        {
+          "name": "Get Estimated Fare",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/get-estimated-fare",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "get-estimated-fare"
+              ]
+            },
+            "description": "Calculates trip fare estimates based on pickup, destination, and vehicle category.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup_coordinates\": \"[31.5099117,34.4509517]\",\n  \"destination_coordinates\": \"[31.50015577102999,34.45545852184296]\",\n  \"type\": \"ride_request\",\n  \"ride_request_type\": \"regular\",\n  \"pickup_address\": \"GF52+X98, Gaza\",\n  \"destination_address\": \"FFX4+MWP, Gaza\",\n  \"intermediate_coordinates\": \"\",\n  \"parcel_weight\": null,\n  \"parcel_category_id\": null,\n  \"scheduled_at\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Ride / Parcel Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "create"
+              ]
+            },
+            "description": "Creates a new ride or parcel delivery request.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup_coordinates\": \"[31.5099117,34.4509517]\",\n  \"destination_coordinates\": \"[31.50015577102999,34.45545852184296]\",\n  \"customer_coordinates\": \"[31.5099117,34.4509517]\",\n  \"customer_request_coordinates\": \"[31.5099117,34.4509517]\",\n  \"vehicle_category_id\": \"8a30eeb6-6b0f-4977-b23f-3d2bd5eacf62\",\n  \"estimated_distance\": \"1.64\",\n  \"estimated_time\": \"6.60\",\n  \"estimated_fare\": \"32.0\",\n  \"actual_fare\": \"32.0\",\n  \"note\": \"\",\n  \"payment_method\": \"cash\",\n  \"type\": \"ride_request\",\n  \"bid\": false,\n  \"pickup_address\": \"GF52+X98, Gaza\",\n  \"destination_address\": \"FFX4+MWP, Gaza\",\n  \"intermediate_addresses\": [\n    \"\",\n    \"\"\n  ],\n  \"entrance\": \"\",\n  \"intermediate_coordinates\": null,\n  \"area_id\": null,\n  \"sender_name\": \"\",\n  \"sender_phone\": null,\n  \"sender_address\": \"\",\n  \"receiver_name\": \"\",\n  \"receiver_phone\": null,\n  \"receiver_address\": \"\",\n  \"parcel_category_id\": null,\n  \"weight\": null,\n  \"payer\": null,\n  \"encoded_polyline\": \"ohi_E_vgqEt@oABCVg@\\\\g@|@yAv@aBp@gBhCrBLLnAcDVq@Ri@\\\\iAXoAr@}C\\\\w@d@k@bAkBj@aAl@{@vAqBb@q@l@q@|@iA`@IfAZ`Ad@nBt@PHvAj@NJLFv@d@NNZJBBb@d@Z^z@~@~AbB\\\\d@\\\\^NPb@n@GH\",\n  \"trip_request_id\": null,\n  \"return_fee\": 0.0,\n  \"cancellation_fee\": 0.0,\n  \"extra_estimated_fare\": 31.7,\n  \"extra_discount_fare\": 0.0,\n  \"extra_discount_amount\": 0.0,\n  \"extra_return_fee\": 0.0,\n  \"extra_cancellation_fee\": 0.0,\n  \"extra_fare_amount\": 0.0,\n  \"extra_fare_fee\": 0.0,\n  \"zone_id\": \"6d71211e-d623-4c42-8211-b1e6987899f5\",\n  \"scheduled_at\": null,\n  \"ride_request_type\": \"regular\",\n  \"surge_multiplier\": 0.0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Trip Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/details/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "details",
+                "TRIP_123"
+              ]
+            },
+            "description": "Retrieves full details for a specified trip ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Trip Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/update-status/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "update-status",
+                "TRIP_123"
+              ]
+            },
+            "description": "Updates ride status (e.g., cancel trip with reason).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\",\n  \"status\": \"cancelled\",\n  \"cancel_reason\": \"Driver taking too long\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Track Location & Remaining Distance",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/track-location",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "track-location"
+              ]
+            },
+            "description": "Tracks active trip location and remaining distance.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trip_request_id\": \"TRIP_123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Bidding List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/bidding-list/TRIP_123?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "bidding-list",
+                "TRIP_123"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Fetches driver bids for a specific trip."
+          },
+          "response": []
+        },
+        {
+          "name": "Ignore Driver Bid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/ignore-bidding",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "ignore-bidding"
+              ]
+            },
+            "description": "Declines/ignores a specific driver's bid.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\",\n  \"bidding_id\": \"BID_123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Nearest Drivers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/drivers-near-me?latitude=31.5099117&longitude=34.4509517",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "drivers-near-me"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "31.5099117"
+                },
+                {
+                  "key": "longitude",
+                  "value": "34.4509517"
+                }
+              ]
+            },
+            "description": "Finds active drivers currently near customer location."
+          },
+          "response": []
+        },
+        {
+          "name": "Trip Action (Accept/Reject Bid)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/trip-action",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "trip-action"
+              ]
+            },
+            "description": "Accepts or rejects a driver offer for a trip.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trip_request_id\": \"TRIP_123\",\n  \"action\": \"accept\",\n  \"driver_id\": \"DRIVER_456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current Ride Status (Resume)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/ride-resume-status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "ride-resume-status"
+              ]
+            },
+            "description": "Checks ongoing ride state to resume UI flow upon app open."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Final Fare",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/final-fare?trip_request_id=TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "final-fare"
+              ],
+              "query": [
+                {
+                  "key": "trip_request_id",
+                  "value": "TRIP_123"
+                }
+              ]
+            },
+            "description": "Calculates final trip fare after ride completion."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Driver Arrival Time & Pickup Location",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/arrival-time?trip_request_id=TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "arrival-time"
+              ],
+              "query": [
+                {
+                  "key": "trip_request_id",
+                  "value": "TRIP_123"
+                }
+              ]
+            },
+            "description": "Fetches estimated driver arrival time at pickup point."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Running / Pending Ride List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/pending-ride-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "pending-ride-list"
+              ]
+            },
+            "description": "Lists all active and pending rides for user."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Ride History List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/list?type=ride_request&limit=20&offset=1&filter=all&start=2026-01-01&end=2026-12-31&status=completed",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "ride_request"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                },
+                {
+                  "key": "filter",
+                  "value": "all"
+                },
+                {
+                  "key": "start",
+                  "value": "2026-01-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-12-31"
+                },
+                {
+                  "key": "status",
+                  "value": "completed"
+                }
+              ]
+            },
+            "description": "Retrieves filtered trip history (completed, cancelled, etc.)."
+          },
+          "response": []
+        },
+        {
+          "name": "Edit Scheduled Trip Time",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/edit-scheduled-trip/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "edit-scheduled-trip",
+                "TRIP_123"
+              ]
+            },
+            "description": "Updates execution time for scheduled future trip.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scheduled_at\": \"2026-08-10 14:30:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Received Returning Parcel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/received-returning-parcel/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "received-returning-parcel",
+                "TRIP_123"
+              ]
+            },
+            "description": "Confirms receipt of parcel being returned by driver.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Ride Cancellation Reasons",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/cancellation-reason-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "cancellation-reason-list"
+              ]
+            },
+            "description": "Fetches predefined cancellation reason options."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6. Parcel Services",
+      "item": [
+        {
+          "name": "Get Parcel Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/parcel/category?limit=100&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "parcel",
+                "category"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Gets list of parcel categories available for selection."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Suggested Vehicle for Parcel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/parcel/suggested-vehicle-category?parcel_weight=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "parcel",
+                "suggested-vehicle-category"
+              ],
+              "query": [
+                {
+                  "key": "parcel_weight",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Suggests vehicle type depending on parcel weight in kg."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Ongoing Parcel List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/ongoing-parcel-list?limit=100&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "ongoing-parcel-list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Lists currently active parcel deliveries."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Unpaid Parcel List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/unpaid-parcel-list?limit=100&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "unpaid-parcel-list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Lists completed parcel deliveries awaiting payment."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Parcel Cancellation Reasons",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/parcel-cancellation-reason-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "parcel-cancellation-reason-list"
+              ]
+            },
+            "description": "Gets cancellation reasons specific to parcel deliveries."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Parcel Refund Reasons",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/parcel-refund-reason-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "parcel-refund-reason-list"
+              ]
+            },
+            "description": "Gets valid reason list for requesting a parcel refund."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Parcel Refund Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/parcel/refund/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "parcel",
+                "refund",
+                "create"
+              ]
+            },
+            "description": "Submits refund request with optional proof image attachments.",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trip_request_id",
+                  "value": "TRIP_123",
+                  "type": "text"
+                },
+                {
+                  "key": "reason",
+                  "value": "Damaged goods",
+                  "type": "text"
+                },
+                {
+                  "key": "parcel_approximate_price",
+                  "value": "150.0",
+                  "type": "text"
+                },
+                {
+                  "key": "customer_note",
+                  "value": "Package arrived torn",
+                  "type": "text"
+                },
+                {
+                  "key": "proof_image[0]",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "7. Payments & Wallet",
+      "item": [
+        {
+          "name": "Get Payment Methods",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/get-payment-methods",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "get-payment-methods"
+              ]
+            },
+            "description": "Lists enabled payment gateways (cash, digital, wallet)."
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Trip Payment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/ride/payment?trip_request_id=TRIP_123&payment_method=wallet&tips=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "ride",
+                "payment"
+              ],
+              "query": [
+                {
+                  "key": "trip_request_id",
+                  "value": "TRIP_123"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "wallet"
+                },
+                {
+                  "key": "tips",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Submits payment and tips for a completed ride."
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Driver / Trip Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/review/store",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "review",
+                "store"
+              ]
+            },
+            "description": "Stores rating and written review for a trip.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ride_request_id\": \"TRIP_123\",\n  \"rating\": 5,\n  \"feedback\": \"Excellent service and safe driving!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Wallet Transaction List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/transaction/list?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "transaction",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Retrieves customer wallet transaction history."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Loyalty Points List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/loyalty-points/list?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "loyalty-points",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Retrieves earned loyalty points breakdown."
+          },
+          "response": []
+        },
+        {
+          "name": "Convert Loyalty Points to Wallet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/loyalty-points/convert",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "loyalty-points",
+                "convert"
+              ]
+            },
+            "description": "Converts loyalty points into wallet balance credit.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"points\": \"500\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Transfer Drivemond Wallet to Mart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/wallet/transfer-drivemond-to-mart",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "wallet",
+                "transfer-drivemond-to-mart"
+              ]
+            },
+            "description": "Transfers funds from ride app wallet to integrated mart app.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"50.0\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Add Fund Bonus List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/wallet/bonus-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "wallet",
+                "bonus-list"
+              ]
+            },
+            "description": "Retrieves active promotional bonuses for wallet top-ups."
+          },
+          "response": []
+        },
+        {
+          "name": "Digital Add Fund to Wallet",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/wallet/add-fund-digitally?user_id=USER_123&amount=100.0&payment_method=myfatoorah",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "wallet",
+                "add-fund-digitally"
+              ],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "USER_123"
+                },
+                {
+                  "key": "amount",
+                  "value": "100.0"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "myfatoorah"
+                }
+              ]
+            },
+            "description": "Initiates digital wallet top-up via payment gateway webview."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "8. Chat & Communication",
+      "item": [
+        {
+          "name": "Create Chat Channel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/chat/create-channel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "chat",
+                "create-channel"
+              ]
+            },
+            "description": "Establishes chat channel between customer and driver/support.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\",\n  \"to\": \"DRIVER_123\",\n  \"trip_id\": \"TRIP_456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Chat Channel List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/chat/channel-list?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "chat",
+                "channel-list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Fetches active chat channels."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Conversation Messages",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/chat/conversation?channel_id=CHAN_123&limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "chat",
+                "conversation"
+              ],
+              "query": [
+                {
+                  "key": "channel_id",
+                  "value": "CHAN_123"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Retrieves messages inside a chat channel."
+          },
+          "response": []
+        },
+        {
+          "name": "Find Channel Ride Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/chat/find-channel?channel_id=CHAN_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "chat",
+                "find-channel"
+              ],
+              "query": [
+                {
+                  "key": "channel_id",
+                  "value": "CHAN_123"
+                }
+              ]
+            },
+            "description": "Finds channel details and linked ride status."
+          },
+          "response": []
+        },
+        {
+          "name": "Send Chat Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/chat/send-message",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "chat",
+                "send-message"
+              ]
+            },
+            "description": "Sends text message and optional attachment images to chat channel.",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "_method",
+                  "value": "put",
+                  "type": "text"
+                },
+                {
+                  "key": "message",
+                  "value": "I am waiting at main entrance",
+                  "type": "text"
+                },
+                {
+                  "key": "channel_id",
+                  "value": "CHAN_123",
+                  "type": "text"
+                },
+                {
+                  "key": "trip_id",
+                  "value": "TRIP_456",
+                  "type": "text"
+                },
+                {
+                  "key": "files[0]",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "9. Offers & Referrals",
+      "item": [
+        {
+          "name": "Get Available Coupon List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/coupon/list?limit=10&offset=1&category_type=8a30eeb6-6b0f-4977-b23f-3d2bd5eacf62",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "coupon",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                },
+                {
+                  "key": "category_type",
+                  "value": "8a30eeb6-6b0f-4977-b23f-3d2bd5eacf62"
+                }
+              ]
+            },
+            "description": "Retrieves active discount coupons for rides or parcels."
+          },
+          "response": []
+        },
+        {
+          "name": "Apply Coupon",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/applied-coupon",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "applied-coupon"
+              ]
+            },
+            "description": "Applies promo coupon to active checkout session.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"post\",\n  \"coupon_id\": \"1068045e-5ac8-4b4d-bd7a-0f172551a122\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Best Offer Discounts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/discount/list?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "discount",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Fetches best promotional discount list."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Referral Program Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/referral-details",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "referral-details"
+              ]
+            },
+            "description": "Gets customer referral code and program bonus rules."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Referral Earnings History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/transaction/referral-earning-list?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "transaction",
+                "referral-earning-list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Lists earnings gained from referred users."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "10. Banners & Categories",
+      "item": [
+        {
+          "name": "Get Banner List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/banner/list?limit=100&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "banner",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Fetches home screen promotional banners."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Banner Click Count",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/banner/update-redirection-count",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "banner",
+                "update-redirection-count"
+              ]
+            },
+            "description": "Increments banner redirection count on click.",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Vehicle Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/vehicle/category?limit=100&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "vehicle",
+                "category"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Fetches available ride vehicle categories."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "11. Safety & Emergency Alerts",
+      "item": [
+        {
+          "name": "Get Emergency Contacts List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/other-emergency-contact-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "other-emergency-contact-list"
+              ]
+            },
+            "description": "Gets list of emergency phone numbers configured by platform."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Safety Alert Reasons",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/safety-alert-reason-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "safety-alert-reason-list"
+              ]
+            },
+            "description": "Gets predefined list of reasons for triggering safety SOS."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Safety Precautions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/config/safety-precaution-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "config",
+                "safety-precaution-list"
+              ]
+            },
+            "description": "Gets safety tips and guidelines for riders."
+          },
+          "response": []
+        },
+        {
+          "name": "Store Safety SOS Alert",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/safety-alert/store",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "safety-alert",
+                "store"
+              ]
+            },
+            "description": "Triggers emergency SOS safety alert for an ongoing trip.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trip_request_id\": \"TRIP_123\",\n  \"lat\": \"31.5099117\",\n  \"lng\": \"34.4509517\",\n  \"comment\": \"Unsafe driving behavior\",\n  \"reason\": \"[\\\"rash_driving\\\",\\\"verbal_abuse\\\"]\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Safety Alert Solved",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/safety-alert/mark-as-solved/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "safety-alert",
+                "mark-as-solved",
+                "TRIP_123"
+              ]
+            },
+            "description": "Resolves an active safety alert.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\",\n  \"lat\": \"31.5099117\",\n  \"lng\": \"34.4509517\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Resend Safety Alert",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/safety-alert/resend/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "safety-alert",
+                "resend",
+                "TRIP_123"
+              ]
+            },
+            "description": "Resends emergency SOS notification to emergency contacts.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"put\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Undo Safety Alert",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/safety-alert/undo/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "safety-alert",
+                "undo",
+                "TRIP_123"
+              ]
+            },
+            "description": "Cancels accidental safety SOS alert.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_method\": \"delete\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Safety Alert Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/safety-alert/show/TRIP_123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "safety-alert",
+                "show",
+                "TRIP_123"
+              ]
+            },
+            "description": "Gets status and details of safety alert for a trip."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "12. Notifications & Settings",
+      "item": [
+        {
+          "name": "Get Notification List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/notification-list?limit=10&offset=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "notification-list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Fetches paginated user notifications."
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Notification as Read",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/read-notification",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "read-notification"
+              ]
+            },
+            "description": "Marks notification ID as read.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notification_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Language Preference",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=UTF-8",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Localization",
+                "value": "{{lang}}",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "zoneId",
+                "value": "{{zoneId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/customer/change-language",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customer",
+                "change-language"
+              ]
+            },
+            "description": "Updates server-side user language setting (uses X-Localization header).",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

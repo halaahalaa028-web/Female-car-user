@@ -1,0 +1,7 @@
+# Copy to android/key.properties (git-ignored) and fill in the REAL values of the
+# upload keystore registered with Google Play. Never commit the real file.
+storePassword=CHANGE_ME
+keyPassword=CHANGE_ME
+keyAlias=CHANGE_ME
+# Path of the .jks relative to android/app or android/
+storeFile=keystore.jks
