@@ -84,9 +84,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(builder: (themeController) {
       return GetBuilder<LocalizationController>(builder: (localizeController) {
-        return SafeArea(
-          top: false,
-          child: GetMaterialApp(
+        return GetMaterialApp(
             title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
             navigatorKey: Get.key,
@@ -108,15 +106,17 @@ class MyApp extends StatelessWidget {
             smartManagement: SmartManagement.keepFactory,
             transitionDuration: const Duration(milliseconds: 500),
             builder: (context, child) {
-              return MediaQuery(
-                data: MediaQuery.of(context).copyWith(
-                  textScaler: const TextScaler.linear(0.95),
+              return SafeArea(
+                top: false,
+                child: MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaler: const TextScaler.linear(0.95),
+                  ),
+                  child: child!,
                 ),
-                child: child!,
               );
             },
-          ),
-        );
+          );
       });
     });
   }
