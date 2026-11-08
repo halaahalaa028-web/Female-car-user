@@ -22,17 +22,57 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // Firebase is configured only here (not in the native AppDelegate).
+  // Keep a Firebase startup error from preventing Flutter's first frame.
+  bool firebaseReady = false;
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    firebaseReady = true;
+  } catch (error, stackTrace) {
+    debugPrint('Firebase initialization failed: $error');
+    debugPrintStack(stackTrace: stackTrace);
+  }
 
-  Map<String, Map<String, String>> languages = await di.init();
-  final RemoteMessage? remoteMessage =
-      await FirebaseMessaging.instance.getInitialMessage();
+  // Load local dependencies and translations before creating the app.
+  final Map<String, Map<String, String>> languages = await di.init();
 
-  await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
-  FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  RemoteMessage? remoteMessage;
+  if (firebaseReady) {
+    try {
+      remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
+    } catch (error, stackTrace) {
+      debugPrint('Initial notification retrieval failed: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+  }
 
-  runApp(MyApp(languages: languages, notificationData: remoteMessage?.data));
+  try {
+    await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp],
+    );
+  } catch (error) {
+    debugPrint('Could not set preferred orientation: $error');
+  }
+
+  // Show Flutter UI before optional notification setup.
+  runApp(
+    MyApp(
+      languages: languages,
+      notificationData: remoteMessage?.data,
+    ),
+  );
+
+  if (firebaseReady) {
+    FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+    try {
+      await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+    } catch (error, stackTrace) {
+      debugPrint('Notification initialization failed: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -47,29 +87,35 @@ class MyApp extends StatelessWidget {
         return SafeArea(
           top: false,
           child: GetMaterialApp(
-              title: AppConstants.appName,
-              debugShowCheckedModeBanner: false,
-              navigatorKey: Get.key,
-              scrollBehavior: const MaterialScrollBehavior().copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
-              ),
-              theme: themeController.darkTheme ? darkTheme : lightTheme,
-              locale: localizeController.locale,
-              initialRoute: RouteHelper.getSplashRoute(
-                  notificationData: notificationData),
-              getPages: RouteHelper.routes,
-              translations: Messages(languages: languages),
-              fallbackLocale: Locale(AppConstants.languages[0].languageCode,
-                  AppConstants.languages[0].countryCode),
-              defaultTransition: Transition.fadeIn,
-              smartManagement: SmartManagement.keepFactory,
-              transitionDuration: const Duration(milliseconds: 500),
-              builder: (context, child) {
-                return MediaQuery(
-                    data: MediaQuery.of(context)
-                        .copyWith(textScaler: const TextScaler.linear(0.95)),
-                    child: child!);
-              }),
+            title: AppConstants.appName,
+            debugShowCheckedModeBanner: false,
+            navigatorKey: Get.key,
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+            ),
+            theme: themeController.darkTheme ? darkTheme : lightTheme,
+            locale: localizeController.locale,
+            initialRoute: RouteHelper.getSplashRoute(
+              notificationData: notificationData,
+            ),
+            getPages: RouteHelper.routes,
+            translations: Messages(languages: languages),
+            fallbackLocale: Locale(
+              AppConstants.languages[0].languageCode,
+              AppConstants.languages[0].countryCode,
+            ),
+            defaultTransition: Transition.fadeIn,
+            smartManagement: SmartManagement.keepFactory,
+            transitionDuration: const Duration(milliseconds: 500),
+            builder: (context, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context).copyWith(
+                  textScaler: const TextScaler.linear(0.95),
+                ),
+                child: child!,
+              );
+            },
+          ),
         );
       });
     });
